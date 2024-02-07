@@ -14,6 +14,7 @@ public class Main {
                     "1-сигменты без фильтра\n" +
                     "2-вылет до текущего момента времени\n" +
                     "3-имеются сегменты с датой прилёта раньше даты вылета\n" +
+                    "4-перелеты, где общее время, проведённое на земле, превышает два часа\n" +
                     "0-для завершения просмотра\n" +
                     "\nВаш выбор: ");
             num = in.nextInt();
@@ -30,7 +31,12 @@ public class Main {
                         .filterArrivalBeforeDeparture()
                         .build();
                 System.out.println("Имеются сегменты с датой прилёта раньше даты вылета:\n" + flightsArrivalBeforeDeparture);
-            } else if (num > 3 || num < 0) {
+            } else if (num==4) {
+                List<Flight> listMoreTwoHours = new FilterImpl(flights)
+                        .filterSumTimeOnGroundMoreThanTwoHours()
+                        .build();
+                System.out.println("Перелеты, где общее время, проведённое на земле, превышает два часа:\n" + listMoreTwoHours);
+            } else if (num > 4 || num < 0) {
                 System.out.println("Введено неправильное значение");
             }
         }

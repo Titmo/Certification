@@ -10,5 +10,5 @@ public interface Filter {
     Filter filterDepartureBeforeNow();
 
     Filter filterArrivalBeforeDeparture();
-
+    Filter filterSumTimeOnGroundMoreThanTwoHours();
 }
